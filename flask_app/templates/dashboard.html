@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header d-flex justfiy-content-between">
+            <h1>Welcome, {{ logged_in_user.first_name }}</h1>
+            <div class="d-flex justify-content-around col-6">
+                <a href="/names/new">Create a new name</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="main">
+            <h3>These are the names</h3>
+            <ul class="list-group">
+                {% for name in all_names %}
+                <li class="list-group-item disabled">Name: {{ name.name }} </li>
+                <li class="list-group-item">Meaning: <td>{{ name.meaning }}</td></li>
+                <li class="list-group-item">Origin: {{ name.origin }}</li>
+                <li class="list-group-item">Pronounciation {{ name.pronounciation }}</li>
+                <li class="list-group-item">Actions: <a href="/names/{{ name.id }}">View</a>
+                    {% if logged_in_user.id == name.user.id %}
+                    <a href="/names/{{ name.id }}/edit">Edit</a>
+                    <a href="/names/{{ name.id }}/delete">Delete</a>
+                    {% endif %}</li>
+                {% endfor %}
+              </ul>
+
+        </div>
+    </div>
+</body>
+</html>

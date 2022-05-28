@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container p-3">
+        <div class="container d-flex justify-content-between mt-4">
+            <div class="col-4">
+                <h2 class="mb-4">Register</h2>
+                <form action="/register" method="post">
+                    <p class="d-flex justify-content-between">
+                        First Name:
+                        <input type="text" name="first_name" id="">
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        Last Name:
+                        <input type="text" name="last_name" id="">
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        Email:
+                        <input type="text" name="email" id="">
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        Password:
+                        <input type="password" name="password" id="">
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        Confirm Password:
+                        <input type="password" name="confirm_password" id="">
+                    </p>
+                    <button class="btn btn-primary mt-2">Register</button>
+                </form>
+            </div>
+            <div class="col-4">
+                <h2 class="mb-4">Login</h2>
+                <form action="/login" method="post">
+                    <p class="d-flex justify-content-between">
+                        Email:
+                        <input type="text" name="email" id="">
+                    </p>
+                    <p class="d-flex justify-content-between">
+                        Password:
+                        <input type="password" name="password" id="">
+                    </p>
+                    <button class="btn btn-primary mt-2">Login</button>
+                </form>
+            </div>
+        </div>
+        {% with messages  = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>
