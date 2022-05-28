@@ -52,10 +52,13 @@ class Name:
         query = "UPDATE names SET name = %(name)s, meaning = %(meaning)s, origin = %(origin)s, pronounciation = %(pronounciation)s, updated_at = NOW() WHERE id = %(id)s;"
     
         return connectToMySQL("name_schema").query_db(query, data)
+    
     #delete
     @classmethod
     def delete(cls, data):
-        pass
+        query = "DELETE FROM names WHERE id = %(id)s;"
+        
+        connectToMySQL("name_schema").query_db(query, data)
 
         
     @staticmethod

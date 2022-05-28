@@ -67,3 +67,10 @@ def update_name(id):
     Name.update(data)
     
     return redirect("/dashboard")
+
+# DELETE
+@app.route("/names/<int:id>/delete")
+def delete_name(id):
+    Name.delete({"id":id})
+    
+    return redirect("/dashboard")
