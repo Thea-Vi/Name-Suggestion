@@ -36,8 +36,15 @@ class Name:
     
     # read one
     @classmethod
-    def get_one(cls):
-        pass
+    def get_one(cls, data):
+        query = "SELECT * FROM names WHERE id = %{id}s;"
+        results = connectToMySQL("name_schema").query_db(query, data)
+        
+        if len(results) < 1:
+            return False
+        
+        
+        return cls(results[0])
 
     # update
     @classmethod

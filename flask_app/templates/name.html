@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>welcome {{ logged_in_user }}</h1>
+            <div class="d-flex justfiy-content-between">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        <div class="main">
+            <h2>Here is the name info:
+                <p>Name: {{ name.name}}</p>
+                <p>Meaning: {{ name.meaning }}</p>
+                <p>Origin: {{ name.origin }}</p>
+                <p>Pronounciation: {{ name.pronounciation }}</p>
+                <p>Suggested By: {{ name.user.first_name }} {{name.user.last_name }}</p>
+            </h2>
+        </div>
+
+    </div>
+    
+</body>
+</html>

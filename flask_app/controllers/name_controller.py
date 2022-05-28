@@ -4,6 +4,8 @@ from flask_app import app
 from flask_app.models.user import User
 from flask_app.models.name import Name
 
+#  --------------- DISPLAY --------------
+
 @app.route("/dashboard")
 def dashboard():
     
@@ -19,6 +21,16 @@ def dashboard():
 @app.route("/names/new")
 def new_name():
     return render_template("new_name.html")
+
+
+@app.route("/names/<int:id>")
+def display_name(id):
+    return render_template(
+        "name.html",
+        logged_in_user = User.get_by_id({"id": session["uuid"]}),
+        name = Name.get_one({"id": id})
+    )
+#  -------------- ACTION ----------------
 
 @app.route("/names/create", methods = ["POST"])
 def create_name():
