@@ -37,7 +37,7 @@ class Name:
     # read one
     @classmethod
     def get_one(cls, data):
-        query = "SELECT * FROM names WHERE id = %{id}s;"
+        query = "SELECT * FROM names WHERE id = %(id)s;"
         results = connectToMySQL("name_schema").query_db(query, data)
         
         if len(results) < 1:
@@ -49,8 +49,9 @@ class Name:
     # update
     @classmethod
     def update(cls, data):
-        pass
+        query = "UPDATE names SET name = %(name)s, meaning = %(meaning)s, origin = %(origin)s, pronounciation = %(pronounciation)s, updated_at = NOW() WHERE id = %(id)s;"
     
+        return connectToMySQL("name_schema").query_db(query, data)
     #delete
     @classmethod
     def delete(cls, data):

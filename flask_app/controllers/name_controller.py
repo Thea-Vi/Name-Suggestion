@@ -30,8 +30,16 @@ def display_name(id):
         logged_in_user = User.get_by_id({"id": session["uuid"]}),
         name = Name.get_one({"id": id})
     )
+    
+@app.route("/names/<int:id>/edit")
+def edit_name(id):
+    return render_template(
+        "edit_name.html",
+        name = Name.get_one({"id": id})
+        
+    )
 #  -------------- ACTION ----------------
-
+# CREATE
 @app.route("/names/create", methods = ["POST"])
 def create_name():
     if not Name.validate(request.form):
@@ -43,4 +51,19 @@ def create_name():
     }
     
     Name.create(data)
+    return redirect("/dashboard")
+
+#  UPDATE
+@app.route("/names/<int:id>/update", methods = ["POST"])
+def update_name(id):
+    if not Name.validate(request.form):
+        return redirect(f"/names/{id}/edit")
+    
+    data = {
+        **request.form,
+        "id": id
+    }
+    
+    Name.update(data)
+    
     return redirect("/dashboard")

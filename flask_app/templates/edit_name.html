@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Edit a name</h1>
+            <div class="d-flex justfiy-content-between">
+                <a href="/dashboard">Dashboard</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+            <div class="main">
+                <form action="/names/{{ name.id }}/update" method="post">
+                    <p>
+                        Name:
+                        <input type="text" name="name" id="" value={{ name.name }}>
+                    </p>
+                        Meaning:
+                        <input type="text" name="meaning" id="" value={{ name.meaning }}>
+                    <p>
+                        Origin:
+                        <input type="text" name="origin" id="" value={{ name.origin }}>
+                    </p>
+                    <p>
+                        Pronounciation:
+                        <input type="text" name="pronounciation" id="" value={{ name.pronounciation }}>
+                    </p>
+                    <button class="btn btn-primary">Edit</button>
+                </form>
+            </div>
+            
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <p class="text-danger">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</html>
