@@ -49,13 +49,28 @@ class User:
     
     @classmethod
     def get_by_id(cls, data):
-        query = "SELECT * FROM users WHERE id = %(id)s;"
+        query = "SELECT * FROM users LEFT JOIN names ON users.id = names.user_id WHERE users.id = %(id)s;"
         results = connectToMySQL("name_schema").query_db(query,data)
-        
         if len(results) < 1:
             return False
         
-        return User(results[0])
+        user = cls(results[0])
+        for row_from_db in results:
+            row_data = {
+                "id": row_from_db["names.id"],
+                "user": user,
+                "name": row_from_db["name"],
+                "meaning": row_from_db["meaning"],
+                "origin": row_from_db["origin"],
+                "pronounciation": row_from_db["pronounciation"],
+                "created_at": row_from_db["names.created_at"],
+                "updated_at": row_from_db["names.updated_at"]
+            }
+            
+            user.name.append(name.Name(row_data))
+        
+        
+        return user
     
     @classmethod
     def create(cls, data):

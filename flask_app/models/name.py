@@ -7,13 +7,19 @@ from flask_app.models import user
 class Name:
     def __init__(self, data):
         self.id = data["id"]
-        self.user = user.User.get_by_id({"id": data["user_id"]})
         self.name = data["name"]
         self.meaning = data["meaning"]
         self.origin = data["origin"]
         self.pronounciation = data["pronounciation"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+        
+        if "user" in data: # if user exists as a key, then data contains user object
+            self.user = data["user"]
+            
+        else: # otherwise, it contains user_id only 
+            self.user = user.User.get_by_id({"id": data["user_id"]})
+            
         
     # create
     @classmethod

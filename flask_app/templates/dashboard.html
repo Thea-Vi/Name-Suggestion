@@ -5,8 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css">
     <title>Name</title>
 </head>
+<style>
+    body {
+        background-image: url("https://media.istockphoto.com/photos/paper-garland-on-beige-background-for-childrens-and-adult-holiday-picture-id1060591550?b=1&k=20&m=1060591550&s=170667a&w=0&h=eUgnhFf1-OkVYznIliHpHWdNzLJjjbTGUGdtejq826E=");
+    }
+</style>
 <body>
     <div class="container">
         <div class="header d-flex justfiy-content-between">
@@ -17,14 +24,27 @@
             </div>
         </div>
         <div class="main">
-            <h3>These are the names</h3>
+            <h3>Names Suggested by Friends and Family:</h3>
             <ul class="list-group">
                 {% for name in all_names %}
+                <li class="list-group-item disabled">Name: {{ name.name }} </li>
+                <li class="list-group-item">See details: <a href="/names/{{ name.id }}">View</a>
+                    <!-- {% if logged_in_user.id == name.user.id %}
+                    <a href="/names/{{ name.id }}/edit">Edit</a>
+                    <a href="/names/{{ name.id }}/delete">Delete</a>
+                    {% endif %}</li> -->
+                {% endfor %}
+              </ul>
+
+        </div>
+        <h3>These are the names you suggested:</h3>
+            <ul class="list-group">
+                {% for name in logged_in_user.name %}
                 <li class="list-group-item disabled">Name: {{ name.name }} </li>
                 <li class="list-group-item">Meaning: <td>{{ name.meaning }}</td></li>
                 <li class="list-group-item">Origin: {{ name.origin }}</li>
                 <li class="list-group-item">Pronounciation {{ name.pronounciation }}</li>
-                <li class="list-group-item">Actions: <a href="/names/{{ name.id }}">View</a>
+                <li class="list-group-item">See more: <a href="/names/{{ name.id }}">View</a>
                     {% if logged_in_user.id == name.user.id %}
                     <a href="/names/{{ name.id }}/edit">Edit</a>
                     <a href="/names/{{ name.id }}/delete">Delete</a>

@@ -4,3 +4,21 @@
     justify-content: space-around;
 
 }
+
+.name_details{
+    border: 2px solid black;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.header_new_name{
+    display: flex;
+    justify-content: space-around;
+}
+.new_name{
+    border: 2px solid black;
+    text-align: center;
+    margin-top: 100px;
+}
+
+
