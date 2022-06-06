@@ -17,17 +17,18 @@
     <div class="container">
         <div class="header">
             <h1>Edit a name</h1>
-            <div class="d-flex justfiy-content-between">
+            <div class="d-flex justify-content-around col-6">
                 <a href="/dashboard">Dashboard</a>
                 <a href="/logout">Logout</a>
             </div>
         </div>
-            <div class="main">
+            <div class="edit_name">
                 <form action="/names/{{ name.id }}/update" method="post">
                     <p>
                         Name:
                         <input type="text" name="name" id="" value={{ name.name }}>
                     </p>
+                    <p>
                         Meaning:
                         <input type="text" name="meaning" id="" value={{ name.meaning }}>
                     <p>
