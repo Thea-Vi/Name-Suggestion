@@ -43,6 +43,9 @@ View Uploaded Names by Other Users:  <br/>
 Add a new name:  <br/>
 <img src="https://i.imgur.com/Fi8wa6b.png"/>
 <br />
+Show added name:  <br/>
+<img src="https://i.imgur.com/7ElgQ6A.png"/>
+<br />
 <br />
 View Name Details:  <br/>
 <img src="https://i.imgur.com/D3qx0fO.png"/>
@@ -51,6 +54,10 @@ View Name Details:  <br/>
 Edit Name:  <br/>
 <img src="https://i.imgur.com/oPuGN3G.png"/>
 <br />
+Delete / Shows New Dashboard entries:  <br/>
+<img src="https://i.imgur.com/g7PrM0k.png"/>
+<br />
+
 
 
 </p>
